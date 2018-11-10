@@ -25,6 +25,39 @@ Router.route('/survey', function() {
     .then(json => load_survey(json));
 });
 
+function user_info(e){
+	console.log(e);
+
+	var questions = e.rows[0].value;
+    var limit = questions.length;
+    for(var i = 0; i < limit; i++){
+        var p = document.createElement("P");
+        p.setAttribute("class", "question");
+        var t = document.createTextNode(questions[i]);
+        p.appendChild(t);
+        document.body.appendChild(p);
+        var input = document.createElement("INPUT");
+        input.setAttribute("class", "q_input");
+        input.setAttribute("placeholder", "Enter Answer Here");
+        document.body.appendChild(input);
+    }
+    var btn = document.createElement("BUTTON");
+    btn.setAttribute("class", "survey_button");
+    btn.addEventListener("click", function(){survey_clicked();});
+    var t = document.createTextNode("Submit");
+    btn.appendChild(t);
+    document.body.appendChild(btn);
+
+}
+
+
+Router.route('/userinfo', function() {
+    this.render('userinfo');
+    fetch('http://18.222.149.151:5984/log_today/_design/newView/_view/new-view')
+    .then(response => response.json())
+    .then(json => user_info(json));
+});
+
 function click_settings(e, i){
 	window.location.href = "/"
 }
@@ -143,3 +176,4 @@ Template.register.events({
         .then(value => evaluate(value));     
     }
 });
+

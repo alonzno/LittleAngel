@@ -20,9 +20,22 @@
 	</center>
 </template>
 
+<template name="userinfo">
+	<center>
+		<h3>Track your progress</h3>
+		
+	</center>
+</template>
+
 <template name="sleep">
 	<center>
-		<h1>Articles</h1>
+		<button class = "Information" onclick="InformationEntering()">Enter Information</button>
+		<script type="text/javascript">
+		function InformationEntering(){
+			window.location.href="/userinfo";
+			}
+		</script>
+		<h1>Lessons</h1>
 	</center>
 </template>
 
@@ -36,6 +49,8 @@
 <template name="back_button">
 	<button class="back_button"  onclick="GoBack()">Go Back</button>
 </template>
+
+
 
 <template name="register">
 	<center>
