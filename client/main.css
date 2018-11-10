@@ -24,7 +24,12 @@ body {
 }
 
 #angel{
-	size: 50%;
+	position: relative;
+	max-width: 6%;
+	max-height: 6%;
+	top: 15px;
+	/*top: -240px;
+	left: 60px;*/
 }
 
 /*
