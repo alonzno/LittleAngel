@@ -4,21 +4,25 @@
 
 <body id="thebody">
 	<center>
-	  	<h1>Operation: Long Neck Panda</h1>
+	  	<h1>Welcome to Meteor!</h1>
   	</center>
 </body>
 
+
 <template name="survey">
-	<center>
-		<h2>Tom Ford</h2>
-	</center>
+	<h2>Tom Ford</h2>
 </template>
 
 <template name="modules">
-	<center>
-		<h2>Modules</h2>
-	</center>
+	<h2>Moduels</h2>
 </template>
+
+<template name="loggedin">
+	{{>survey}}
+	{{>modules}}
+</template>
+
+
 
 <template name="register">
 	<center>
