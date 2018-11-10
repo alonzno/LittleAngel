@@ -44,6 +44,12 @@ body {
 	border-radius: 10px;
 }
 
+#graphs{
+	position: relative;
+	max-width: 50%;
+	max-height: 50%;
+}
+
 #info-frame{
 	background-color: lightgreen;
 	display: inline-block;

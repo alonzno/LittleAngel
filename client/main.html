@@ -41,13 +41,13 @@
 	<br><br>
 	<script type="text/javascript">
 		let image = document.getElementById("graphs");
-		image.addEventListener("click", function(){
-			if(image.src = "graph1.png"){
+		image.onclick = function(){
+			if(image.src == "graph1.png"){
 				image.src = "graph2.png";
 			}else{
 				image.src = "graph1.png";
 			}
-		});
+		};
 	</script>
 </template>
 
