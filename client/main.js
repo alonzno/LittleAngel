@@ -2,8 +2,13 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 /*import user collection*/
-import User_data from "../users/user_data.js";
+import "../modules/survey.js";
 import './main.html';
+
+Template.survey.events({
+
+	
+});
 
 Template.register.events({
     'submit form': function(event){
@@ -14,7 +19,5 @@ Template.register.events({
             email: email,
             password: password
         });
-        const ud = User_data.find({}).fetch();
-        console.log(ud);
     }
 });
