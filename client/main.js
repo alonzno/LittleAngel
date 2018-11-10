@@ -15,24 +15,22 @@ Router.route('/', function () {
 /*create table for surveys*/
 function tim_tom(){
     
-    
-
     var i = 9;
     while(i > 0){
-    var tablename = document.createElement("TableName");
-    tablename.setAttribute("id", "myTable");
-    document.body.appendChild(tablename);
+        var tablename = document.createElement("TableName");
+        tablename.setAttribute("id", "myTable");
+        document.body.appendChild(tablename);
 
-    var y = document.createElement("TR");
-    y.setAttribute("id", "tablerow");
-    document.getElementById("myTable").appendChild(y);
+        var y = document.createElement("TR");
+        y.setAttribute("id", "tablerow");
+        document.getElementById("myTable").appendChild(y);
 
-    var z = document.createElement("TD");
-    var t = document.createTextNode("Swag");
-    var g = document.createElement("INPUT");
-    z.appendChild(t);
-    z.appendChild(g);
-    document.getElementById("tablerow").appendChild(z);
+        var z = document.createElement("TD");
+        var t = document.createTextNode("Swag");
+        var g = document.createElement("INPUT");
+        z.appendChild(t);
+        z.appendChild(g);
+        document.getElementById("tablerow").appendChild(z);
     i--;
 }
 
