@@ -43,7 +43,7 @@ function load_survey(e){
 }
 
 function mod_clicked(e){
-    Router.go("survey");
+    window.location.href = "/survey";
 }
 
 function load_modules(e){
@@ -79,10 +79,10 @@ function has_authenticated(e, usere, userp){
 
 function evaluate(e){
     if (e == true){
-        Router.go('modules');
+        window.location.href = "modules";
     }else{
         alert("Error Incorrect Login Information Entered");
-        Router.go('/');
+        window.location.href = "/";
     }
 }
 

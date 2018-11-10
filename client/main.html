@@ -6,12 +6,17 @@
 	<center>
 	  	<h1>Little Angel  <img id="angel" src="angel.png" alt="angel.png"></h1>
   	</center>
+  	<script type="text/javascript">
+  		function GoBack(){
+		    history.back();
+		    Router.current().render().data();
+		}
+  	</script>
 </body>
 
 <template name="survey">
 	<center>
 		<h2>Survey</h2>
-		<a href="/modules">Back</a>
 	</center>
 </template>
 
@@ -20,6 +25,10 @@
 		<h2>Modules</h2>
 		<h3>Select a Module</h3>
 	</center>
+</template>
+
+<template name="back_button">
+	<button class="back_button"  onclick="GoBack()">Go Back</button>
 </template>
 
 <template name="register">
@@ -38,6 +47,3 @@
 	</center>
 </template>
 
-<template>
-<button class="back_button"  ng-click="GoBack()"</button>
-</button></template>
