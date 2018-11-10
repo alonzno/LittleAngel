@@ -25,6 +25,10 @@ Router.route('/survey', function() {
     .then(json => load_survey(json));
 });
 
+function survey_clicked(){
+    // window.location.href = "";
+}
+
 /*create table for surveys*/
 function load_survey(e){
     var questions = e.rows[0].doc.questions;
@@ -40,6 +44,12 @@ function load_survey(e){
         input.setAttribute("placeholder", "Enter Answer Here");
         document.body.appendChild(input);
     }
+    var btn = document.createElement("BUTTON");
+    btn.setAttribute("class", "survey_button");
+    btn.addEventListener("click", function(){survey_clicked();});
+    var t = document.createTextNode("Submit");
+    btn.appendChild(t);
+    document.body.appendChild(btn);
 }
 
 function mod_clicked(e){
