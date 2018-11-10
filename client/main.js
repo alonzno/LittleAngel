@@ -6,7 +6,6 @@ import "../modules/survey.js";
 
 import './main.html';
 
-var auth = false;
 Router.route('/', function () {
     this.render('register');
     document.title = "Welcome to Little Angle";
@@ -47,19 +46,6 @@ function load_modules(e){
         document.body.appendChild(document.createElement("BR"));
         document.body.appendChild(document.createElement("BR"));
     }
-    // var questions = e.rows[0].doc.questions;
-    // var limit = questions.length;
-    // for(var i = 0; i < limit; i++){
-    //     var p = document.createElement("P");
-    //     p.setAttribute("class", "question");
-    //     var t = document.createTextNode(questions[i]);
-    //     p.appendChild(t);
-    //     document.body.appendChild(p);
-    //     var input = document.createElement("INPUT");
-    //     input.setAttribute("class", "q_input");
-    //     input.setAttribute("placeholder", "Enter Answer Here");
-    //     document.body.appendChild(input);
-    // }
 }
 
 Router.route('/survey', function() {
@@ -85,18 +71,25 @@ Router.route('/loggedin', function(){
 function has_authenticated(e, usere, userp){
     var em = e.rows[0].doc.email;
     var p = e.rows[0].doc.pass;
-    console.log(p);
     if ( em != usere){
         auth =false;
-        return;
+        return false;
     }
     if ( p != userp){
         auth = false;
-        return;
+        return false;
     }
-    console.log(auth);
     auth = true;
-    return;
+    return true;
+}
+
+function evaluate(e){
+    if (e == true){
+        Router.go('loggedin');
+    }else{
+        alert("Error Incorrect Login Information Entered");
+        Router.go('/');
+    }
 }
 
 Template.register.events({
@@ -111,14 +104,7 @@ Template.register.events({
         
          fetch('http://18.222.149.151:5984/users/_all_docs?include_docs=true')
         .then(response => response.json())
-        .then(json => has_authenticated(json, email,password));
-        if (auth == true){
-            Router.go('loggedin');
-        }
-        else{
-            alert("Error Incorrect Login Information Entered");
-            Router.go('/');}
-        console.log(auth);       
+        .then(json => has_authenticated(json, email,password))
+        .then(value => evaluate(value));     
     }
-    
 });
