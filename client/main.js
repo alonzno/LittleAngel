@@ -9,7 +9,21 @@ import './main.html';
 Router.route('/', function () {
     this.render('register');
     document.title = "Welcome to Little Angle";
-  });
+});
+
+Router.route('/modules', function(){
+    this.render('./modules');
+    fetch('http://18.222.149.151:5984/modules/_design/nameView/_view/name-view')
+    .then(response => response.json())
+    .then(json => load_modules(json));
+});
+
+Router.route('/survey', function() {
+    this.render('survey');
+    fetch('http://18.222.149.151:5984/surveys/_all_docs?include_docs=true')
+    .then(response => response.json())
+    .then(json => load_survey(json));
+});
 
 /*create table for surveys*/
 function load_survey(e){
@@ -47,21 +61,6 @@ function load_modules(e){
         document.body.appendChild(document.createElement("BR"));
     }
 }
-
-Router.route('/survey', function() {
-    this.render('survey');
-    fetch('http://18.222.149.151:5984/surveys/_all_docs?include_docs=true')
-    .then(response => response.json())
-    .then(json => load_survey(json));
-});
-
-
-Router.route('/modules', function(){
-    this.render('./modules');
-    fetch('http://18.222.149.151:5984/modules/_design/nameView/_view/name-view')
-    .then(response => response.json())
-    .then(json => load_modules(json));
-});
 
 function has_authenticated(e, usere, userp){
     var em = e.rows[0].doc.email;
