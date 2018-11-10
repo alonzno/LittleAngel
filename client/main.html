@@ -9,19 +9,30 @@
 </body>
 
 <template name="survey">
-	<h2>Tom Ford</h2>
+	<center>
+		<h2>Tom Ford</h2>
+	</center>
 </template>
 
 <template name="modules">
-	<h2>Moduels</h2>
+	<center>
+		<h2>Modules</h2>
+	</center>
 </template>
 
 <template name="register">
-	<h2>Register</h2>
-	<form class="register">
-        <p>Email: <input type="email" name="email"></p>
-        <p>Password: <input type="password" name="password"></p>
-        <p><input type="submit" value="Register"></p>
-	</form>
+	<center>
+		<div id="info-frame">
+			<h2>Register</h2>
+			<form class="register">
+		        <p id="email">Email: <input type="email" name="email" class="label"></p>
+		        <p id="password">Password: <input type="password" name="password" class="label"></p>
+		        <p>
+		        	<input type="submit" value="Register">
+		        	<input type="submit" value="Login">
+		        </p>
+			</form>
+		</div>
+	</center>
 </template>
 
