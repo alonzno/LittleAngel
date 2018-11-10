@@ -1,6 +1,7 @@
 body {
   padding: 10px;
-  font-family: sans-serif;
+  font-family: courier;
+  background-color: lightyellow;
 }
 
 .label{
@@ -11,6 +12,15 @@ body {
 	background-color: lightgreen;
 	display: inline-block;
 
+}
+
+.button{
+	background-color: lightyellow;
+}
+
+#header2{
+	padding-left: 40px; 
+	padding-right: 40px;
 }
 
 /*
