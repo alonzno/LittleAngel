@@ -172,6 +172,76 @@ function has_authenticated(e, usere, userp){
     return true;
 }
 
+
+function load_zero(e){
+    	let clessons = e.rows[0].key;
+    	//lessons.push(clessons);
+    	let but = document.createElement("p");
+    	let node = document.createTextNode(clessons);
+    	but.appendChild(node);
+    	for(var a = 0; a < e.rows[0].value.length; a++){
+    		let m = document.createTextNode(e.rows[0].value[a]);
+    		but.appendChild(m);
+    		//let t = document.createTextNode(clessons);
+    		//but.appendChild(t);
+    	}
+    	
+    	document.body.appendChild(but);
+        document.body.appendChild(document.createElement("BR"));
+        document.body.appendChild(document.createElement("BR"));
+}
+function load_one(e){
+    	let clessons = e.rows[1].key;
+    	//lessons.push(clessons);
+    	let but = document.createElement("p");
+    	let node = document.createTextNode(clessons);
+    	but.appendChild(node);
+    	for(var a = 0; a < e.rows[0].value.length; a++){
+    		let m = document.createTextNode(e.rows[1].value[a]);
+    		but.appendChild(m);
+    		//let t = document.createTextNode(clessons);
+    		//but.appendChild(t);
+    	}
+    	
+    	document.body.appendChild(but);
+        document.body.appendChild(document.createElement("BR"));
+        document.body.appendChild(document.createElement("BR"));
+}
+Router.route('/zeroarticle', function() {
+    this.render('zeroarticle');
+    fetch('http://18.222.149.151:5984/sleep_lessons/_design/newView/_view/new-view')
+    .then(response => response.json())
+    .then(json => load_zero(json));
+});
+
+function run(e,inw){
+    if(inw == 0)
+    	window.location.href = "zeroarticle";
+    else
+    	window.location.href = "zeroarticle";
+    // window.location.href = "/lesson1";
+}
+
+
+function load_sleep(e){
+    console.log(e);
+    var lessons = []
+    for(let i = 0; i < e.rows.length; i++){
+    	let clessons = e.rows[i].key;
+    	lessons.push(clessons);
+    	let but = document.createElement("BUTTON");
+    	but.setAttribute("class", "lesson_button");
+    	but.setAttribute("type", "Button");
+    	but.addEventListener("click",function(){run(e, i);} );
+    	let t = document.createTextNode(clessons);
+    	but.appendChild(t);
+    	document.body.appendChild(but);
+        document.body.appendChild(document.createElement("BR"));
+        document.body.appendChild(document.createElement("BR"));
+    }
+}
+
+
 function evaluate(e){
     if (e == true){
         window.location.href = "modules";
