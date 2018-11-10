@@ -1,6 +1,8 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
+/*import user collection*/
+import User_data from "../users/user_data.js";
 import './main.html';
 
 Template.register.events({
@@ -12,6 +14,7 @@ Template.register.events({
             email: email,
             password: password
         });
-        alert(email);
+        const ud = User_data.find({}).fetch();
+        console.log(ud);
     }
 });
