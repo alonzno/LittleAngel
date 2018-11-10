@@ -12,6 +12,18 @@ body {
 	background-color: lightyellow;
 }
 
+.mod_button{
+	position: relative;
+	background-color: lightgreen;
+	width: 500px;
+	height: 60px;
+	font-size: 20px;
+	border-radius: 10px;
+	margin-right: 30%;
+	margin-left: 30%;
+	left: 20px;
+}
+
 #info-frame{
 	background-color: lightgreen;
 	display: inline-block;
@@ -28,8 +40,6 @@ body {
 	max-width: 60px;
 	max-height: 60px;
 	top: 10px;
-	/*top: -240px;
-	left: 60px;*/
 }
 
 /*

@@ -13,7 +13,7 @@ Router.route('/', function () {
   });
 
 /*create table for surveys*/
-function tim_tom(e){
+function load_survey(e){
     var questions = e.rows[0].doc.questions;
     var limit = questions.length;
     for(var i = 0; i < limit; i++){
@@ -29,18 +29,52 @@ function tim_tom(e){
     }
 }
 
+function mod_clicked(e){
+    alert(e);
+}
+
+function load_modules(e){
+    var modules = []
+    for(var i = 0; i < e.rows.length; i++){
+        var curr_module = e.rows[i].value;
+        modules.push(curr_module);
+        var btn = document.createElement("BUTTON");
+        btn.setAttribute("class", "mod_button");
+        btn.addEventListener("click", function(){mod_clicked();});
+        var t = document.createTextNode(curr_module);
+        btn.appendChild(t);
+        document.body.appendChild(btn);
+        document.body.appendChild(document.createElement("BR"));
+        document.body.appendChild(document.createElement("BR"));
+    }
+    // var questions = e.rows[0].doc.questions;
+    // var limit = questions.length;
+    // for(var i = 0; i < limit; i++){
+    //     var p = document.createElement("P");
+    //     p.setAttribute("class", "question");
+    //     var t = document.createTextNode(questions[i]);
+    //     p.appendChild(t);
+    //     document.body.appendChild(p);
+    //     var input = document.createElement("INPUT");
+    //     input.setAttribute("class", "q_input");
+    //     input.setAttribute("placeholder", "Enter Answer Here");
+    //     document.body.appendChild(input);
+    // }
+}
+
 Router.route('/survey', function() {
     this.render('survey');
-    document.title="Survey to get to know you";
     fetch('http://18.222.149.151:5984/surveys/_all_docs?include_docs=true')
     .then(response => response.json())
-    .then(json => tim_tom(json));
+    .then(json => load_survey(json));
 });
 
 
 Router.route('/modules', function(){
-    document.title="Pick available modules";
     this.render('./modules');
+    fetch('http://18.222.149.151:5984/modules/_design/nameView/_view/name-view')
+    .then(response => response.json())
+    .then(json => load_modules(json));
 });
 
 Router.route('/loggedin', function(){
