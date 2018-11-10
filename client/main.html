@@ -12,6 +12,7 @@
 <template name="survey">
 	<center>
 		<h2>Survey</h2>
+		<a href="/loggedin">
 	</center>
 </template>
 
@@ -23,11 +24,16 @@
 </template>
 
 <template name="loggedin">
-	{{>survey}}
-	{{>modules}}
+	{{>loggednav}}
 </template>
 
-
+<template name="loggednav">
+	<center>
+	<a href="/survey">Survey</a> <br>
+	<a href="/charts">Your Charts</a><br>
+	<a href="/modules">Your Modules</a>
+	</center>
+</template>
 
 <template name="register">
 	<center>
