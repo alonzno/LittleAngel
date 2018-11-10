@@ -5,9 +5,17 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import "../modules/survey.js";
 import './main.html';
 
-Template.survey.events({
 
-	
+Router.route('/', function () {
+    this.render('register');
+  });
+
+Router.route('/survey', function() {
+    this.render('survey');
+});
+
+Router.route('/modules', function(){
+    this.render('modules');
 });
 
 Template.register.events({
