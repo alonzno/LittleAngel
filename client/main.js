@@ -13,37 +13,28 @@ Router.route('/', function () {
   });
 
 /*create table for surveys*/
-function tim_tom(){
-    
-    var i = 9;
-    while(i > 0){
-        var tablename = document.createElement("TableName");
-        tablename.setAttribute("id", "myTable");
-        document.body.appendChild(tablename);
-
-        var y = document.createElement("TR");
-        y.setAttribute("id", "tablerow");
-        document.getElementById("myTable").appendChild(y);
-
-        var z = document.createElement("TD");
-        var t = document.createTextNode("Swag");
-        var g = document.createElement("INPUT");
-        z.appendChild(t);
-        z.appendChild(g);
-        document.getElementById("tablerow").appendChild(z);
-    i--;
-}
-
+function tim_tom(e){
+    var questions = e.rows[0].doc.questions;
+    var limit = questions.length;
+    for(var i = 0; i < limit; i++){
+        var p = document.createElement("P");
+        p.setAttribute("class", "question");
+        var t = document.createTextNode(questions[i]);
+        p.appendChild(t);
+        document.body.appendChild(p);
+        var input = document.createElement("INPUT");
+        input.setAttribute("class", "q_input");
+        input.setAttribute("placeholder", "Enter Answer Here");
+        document.body.appendChild(input);
+    }
 }
 
 Router.route('/survey', function() {
     this.render('survey');
     document.title="Survey to get to know you";
-    fetch('http://18.222.149.151:5984/surveys/_all_docs')
+    fetch('http://18.222.149.151:5984/surveys/_all_docs?include_docs=true')
     .then(response => response.json())
-    .then(json => console.log(json))
-    tim_tom();
-
+    .then(json => tim_tom(json));
 });
 
 

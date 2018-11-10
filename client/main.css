@@ -8,14 +8,14 @@ body {
 	display: block;
 }
 
+.button{
+	background-color: lightyellow;
+}
+
 #info-frame{
 	background-color: lightgreen;
 	display: inline-block;
 
-}
-
-.button{
-	background-color: lightyellow;
 }
 
 #header2{
@@ -25,9 +25,9 @@ body {
 
 #angel{
 	position: relative;
-	max-width: 6%;
-	max-height: 6%;
-	top: 15px;
+	max-width: 60px;
+	max-height: 60px;
+	top: 10px;
 	/*top: -240px;
 	left: 60px;*/
 }
