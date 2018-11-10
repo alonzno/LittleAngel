@@ -36,11 +36,11 @@ function mod_clicked(e){
 function load_modules(e){
     var modules = []
     for(var i = 0; i < e.rows.length; i++){
-        var curr_module = e.rows[i].value;
+        let curr_module = e.rows[i].value;
         modules.push(curr_module);
-        var btn = document.createElement("BUTTON");
+        let btn = document.createElement("BUTTON");
         btn.setAttribute("class", "mod_button");
-        btn.addEventListener("click", function(){mod_clicked();});
+        btn.addEventListener("click", function(){mod_clicked(curr_module);});
         var t = document.createTextNode(curr_module);
         btn.appendChild(t);
         document.body.appendChild(btn);
