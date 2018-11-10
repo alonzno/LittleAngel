@@ -25,8 +25,51 @@ Router.route('/survey', function() {
     .then(json => load_survey(json));
 });
 
+function load_sleep(e){
+    console.log(e);
+    var listlen = e.rows.length;
+
+    for(var i = 0; i < listlen; i++){
+        var p = document.createElement("P");
+        p.setAttribute("class", "question");
+        var t = document.createTextNode(e.rows[i].key);
+        //var innerlen = e.rows[i].value.length;
+        p.appendChild(t);
+       // console.log(t);
+        console.log(e.rows[i].value.length);
+
+        var str = [];
+        var r = document.createTextNode(e.rows[i].value[1]);
+            //str.push(r);
+            //console.log(r);
+            //p.appendChild(r);
+        
+        //console.log(str);
+        p.appendChild(str);
+        document.body.appendChild(p);
+    }
+
+    var btn = document.createElement("BUTTON");
+    btn.setAttribute("class", "survey_button");
+    btn.addEventListener("click", function(){survey_clicked();});
+    var t = document.createTextNode("Submit");
+    btn.appendChild(t);
+    document.body.appendChild(btn);
+    //var questions = e.rows[0].doc.questions;    
+}
+
+Router.route('/sleep', function(){
+    this.render('sleep');
+    document.title = "Sleepy boy";
+
+    fetch('http://18.222.149.151:5984/sleep_lessons/_design/newView/_view/new-view')
+    .then(response => response.json())
+    .then(json => load_sleep(json));
+
+});
+
 function survey_clicked(){
-    // window.location.href = "";
+    window.location.href = "/sleep";
 }
 
 /*create table for surveys*/
