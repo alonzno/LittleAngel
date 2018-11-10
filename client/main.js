@@ -63,11 +63,6 @@ Router.route('/modules', function(){
     .then(json => load_modules(json));
 });
 
-// Router.route('/loggedin', function(){
-//     document.title="Welcome back";
-//     this.render('./modules');
-// });
-
 function has_authenticated(e, usere, userp){
     var em = e.rows[0].doc.email;
     var p = e.rows[0].doc.pass;
