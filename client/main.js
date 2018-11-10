@@ -25,6 +25,10 @@ Router.route('/survey', function() {
     .then(json => load_survey(json));
 });
 
+function click_settings(e, i){
+	window.location.href = "/"
+}
+
 function load_sleep(e){
     console.log(e);
     var lessons = []
