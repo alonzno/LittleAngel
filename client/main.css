@@ -14,7 +14,7 @@ body {
 	border-radius: 10px;
 }
 
-.mod_button{
+.mod_button, .lesson_button, .info_button{
 	position: relative;
 	background-color: lightgreen;
 	width: 500px;
@@ -24,6 +24,11 @@ body {
 	margin-right: 30%;
 	margin-left: 30%;
 	left: 20px;
+}
+
+.excl{
+	position: relative;
+	top: 100px;
 }
 
 .sleepy_title{

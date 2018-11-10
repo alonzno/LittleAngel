@@ -29,19 +29,26 @@
 
 <template name="sleep">
 	<center>
-	<img src="graph.png"> <br>
-		<button class = "Information" onclick="InformationEntering()">Enter Information</button>
+	<img src="graph1.png" id="graphs"> <br>
+		<button class = "info_button" onclick="InformationEntering()">Enter Information</button>
 		<script type="text/javascript">
-		function InformationEntering(){
-			window.location.href="/userinfo";
+			function InformationEntering(){
+				window.location.href="/userinfo";
 			}
 		</script><br>
 		<h1>Lessons</h1>
 	</center><br>
 	<br><br>
-	<button>!</button>
-	<br><button>!</button>
-
+	<script type="text/javascript">
+		let image = document.getElementById("graphs");
+		image.addEventListener("click", function(){
+			if(image.src = "graph1.png"){
+				image.src = "graph2.png";
+			}else{
+				image.src = "graph1.png";
+			}
+		});
+	</script>
 </template>
 
 <template name="modules">

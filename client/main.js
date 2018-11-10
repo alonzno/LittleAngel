@@ -84,6 +84,20 @@ function load_sleep(e){
         document.body.appendChild(document.createElement("BR"));
         document.body.appendChild(document.createElement("BR"));
     }
+
+    let button1 = document.createElement("BUTTON");
+    button1.setAttribute("class", "excl");
+    button1.addEventListener("click",function(){alert("Don't Forget to Set an Alarm");} );
+    var t = document.createTextNode("!");
+    button1.appendChild(t);
+    document.body.appendChild(button1);
+
+    let button2 = document.createElement("BUTTON");
+    button2.setAttribute("class", "excl");
+    button2.addEventListener("click",function(){alert("It's an Hour Before Bed, Read a Book Until Then, Put Down Your Phone");} );
+    var t = document.createTextNode("!");
+    button2.appendChild(t);
+    document.body.appendChild(button2);
 }
 
 Router.route('/sleep', function(){
