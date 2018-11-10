@@ -24,6 +24,14 @@ body {
 	left: 20px;
 }
 
+.nav_button{
+	background-color: lightgreen;
+	width: 500px;
+	height: 60px;
+	font-size: 20px;
+	border-radius: 10px;
+}
+
 #info-frame{
 	background-color: lightgreen;
 	display: inline-block;
