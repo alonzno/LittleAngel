@@ -27,31 +27,19 @@ Router.route('/survey', function() {
 
 function load_sleep(e){
     console.log(e);
-    var listlen = e.rows.length;
-
-    for(var i = 0; i < listlen; i++){
-        var p = document.createElement("P");
-        p.setAttribute("class", "sleepy_title");
-        var t = document.createTextNode(e.rows[i].key);
-        // var innerlen = e.rows[i].value.length;
-        // console.log(e.rows[0].value[1]);
-        p.appendChild(t);
-        document.body.appendChild(p);
-        for(var a in e.rows[i].value){
-            var p_tag = document.createElement("P");
-            var text = document.createTextNode(e.rows[i].value[a]);
-            p_tag.appendChild(text);
-            document.body.appendChild(p_tag);
-        }
+    var lessons = []
+    for(var i = 0; i < e.rows.length; i++){
+    	let clessons = e.rows[i].key;
+    	lessons.push(clessons);
+    	let but = document.createElement("BUTTON");
+    	but.setAttribute("class", "lesson_button");
+    	but.addEventListener("click",function(){click_settings(clessons);} );
+    	var t = document.createTextNode(clessons);
+    	but.appendChild(t);
+    	document.body.appendChild(but);
+        document.body.appendChild(document.createElement("BR"));
+        document.body.appendChild(document.createElement("BR"));
     }
-
-    var btn = document.createElement("BUTTON");
-    btn.setAttribute("class", "survey_button");
-    btn.addEventListener("click", function(){survey_clicked();});
-    var t = document.createTextNode("Submit");
-    btn.appendChild(t);
-    document.body.appendChild(btn);
-    //var questions = e.rows[0].doc.questions;    
 }
 
 Router.route('/sleep', function(){
