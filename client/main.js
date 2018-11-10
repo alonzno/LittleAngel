@@ -58,9 +58,16 @@ Router.route('/userinfo', function() {
     .then(json => user_info(json));
 });
 
-function click_settings(e, i){
-	window.location.href = "/"
+function run(e, i, a, but){
+    var p = document.createElement("P");
+    p.setAttribute("class", "lessons");
+    p.setAttribute("style", "display: inline-block;");
+    var t = document.createTextNode(e.rows[i].value[a]);
+    p.appendChild(t);
+    but.append(p);
+    // window.location.href = "/lesson1";
 }
+
 
 function load_sleep(e){
     console.log(e);
@@ -70,7 +77,7 @@ function load_sleep(e){
     	lessons.push(clessons);
     	let but = document.createElement("BUTTON");
     	but.setAttribute("class", "lesson_button");
-    	but.addEventListener("click",function(){click_settings(clessons);} );
+    	but.addEventListener("click",function(){run(clessons, i);} );
     	var t = document.createTextNode(clessons);
     	but.appendChild(t);
     	document.body.appendChild(but);
