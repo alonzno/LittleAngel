@@ -14,6 +14,9 @@ Router.route('/', function () {
 
 /*create table for surveys*/
 function tim_tom(){
+    
+    
+
     var i = 9;
     while(i > 0){
     var tablename = document.createElement("TableName");
@@ -21,7 +24,7 @@ function tim_tom(){
     document.body.appendChild(tablename);
 
     var y = document.createElement("TR");
-    y.setAttribute("id", "myTr");
+    y.setAttribute("id", "tablerow");
     document.getElementById("myTable").appendChild(y);
 
     var z = document.createElement("TD");
@@ -29,17 +32,16 @@ function tim_tom(){
     var g = document.createElement("INPUT");
     z.appendChild(t);
     z.appendChild(g);
-    document.getElementById("myTr").appendChild(z);
-    linebreak = document.createElement("br");
-    z.appendChild(linebreak);
+    document.getElementById("tablerow").appendChild(z);
     i--;
 }
+
 }
 
 Router.route('/survey', function() {
     this.render('survey');
     document.title="Survey to get to know you";
-    fetch('https://jsonplaceholder.typicode.com/todos/1')
+    fetch('http://18.222.149.151:5984/surveys/_all_docs')
     .then(response => response.json())
     .then(json => console.log(json))
     tim_tom();
