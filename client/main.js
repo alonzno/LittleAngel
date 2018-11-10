@@ -38,7 +38,6 @@ Router.route('/survey', function() {
 });
 
 
-
 Router.route('/modules', function(){
     document.title="Pick available modules";
     this.render('./modules');
