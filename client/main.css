@@ -8,8 +8,10 @@ body {
 	display: block;
 }
 
-.button{
+.login_button{
 	background-color: lightyellow;
+	font-size: 20px;
+	border-radius: 10px;
 }
 
 .mod_button{
@@ -35,7 +37,7 @@ body {
 #info-frame{
 	background-color: lightgreen;
 	display: inline-block;
-
+	border-radius: 10px;
 }
 
 #header2{

@@ -29,7 +29,7 @@ function load_survey(e){
 }
 
 function mod_clicked(e){
-    alert(e);
+    Router.go("survey");
 }
 
 function load_modules(e){
@@ -63,10 +63,10 @@ Router.route('/modules', function(){
     .then(json => load_modules(json));
 });
 
-Router.route('/loggedin', function(){
-    document.title="Welcome back";
-    this.render('./loggedin');
-});
+// Router.route('/loggedin', function(){
+//     document.title="Welcome back";
+//     this.render('./modules');
+// });
 
 function has_authenticated(e, usere, userp){
     var em = e.rows[0].doc.email;
@@ -85,7 +85,7 @@ function has_authenticated(e, usere, userp){
 
 function evaluate(e){
     if (e == true){
-        Router.go('loggedin');
+        Router.go('modules');
     }else{
         alert("Error Incorrect Login Information Entered");
         Router.go('/');
