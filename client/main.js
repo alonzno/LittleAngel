@@ -6,7 +6,7 @@ import "../modules/survey.js";
 
 import './main.html';
 
-
+var auth = false;
 Router.route('/', function () {
     this.render('register');
     document.title = "Welcome to Little Angle";
@@ -82,6 +82,23 @@ Router.route('/loggedin', function(){
     this.render('./loggedin');
 });
 
+function has_authenticated(e, usere, userp){
+    var em = e.rows[0].doc.email;
+    var p = e.rows[0].doc.pass;
+    console.log(p);
+    if ( em != usere){
+        auth =false;
+        return;
+    }
+    if ( p != userp){
+        auth = false;
+        return;
+    }
+    console.log(auth);
+    auth = true;
+    return;
+}
+
 Template.register.events({
     'submit form': function(event){
         event.preventDefault();
@@ -91,15 +108,17 @@ Template.register.events({
             email: email,
             password: password
         });
-        alert(email);
-        alert(password);
-        Router.go('loggedin');
-        var registeredstuff = new Object();
-        registeredstuff.email = email;
-        registeredstuff.password = password;
-
-        var tojson = JSON.stringify(registeredstuff);
-        console.log(tojson);
+        
+         fetch('http://18.222.149.151:5984/users/_all_docs?include_docs=true')
+        .then(response => response.json())
+        .then(json => has_authenticated(json, email,password));
+        if (auth == true){
+            Router.go('loggedin');
+        }
+        else{
+            alert("Error Incorrect Login Information Entered");
+            Router.go('/');}
+        console.log(auth);       
     }
     
 });
