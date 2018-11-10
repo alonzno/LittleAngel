@@ -26,6 +26,11 @@ body {
 	left: 20px;
 }
 
+.sleepy_title{
+	font-weight: bold;
+	font-size: 150%;
+}
+
 .nav_button{
 	background-color: lightgreen;
 	width: 500px;

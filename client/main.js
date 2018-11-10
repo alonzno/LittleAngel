@@ -31,22 +31,18 @@ function load_sleep(e){
 
     for(var i = 0; i < listlen; i++){
         var p = document.createElement("P");
-        p.setAttribute("class", "question");
+        p.setAttribute("class", "sleepy_title");
         var t = document.createTextNode(e.rows[i].key);
-        //var innerlen = e.rows[i].value.length;
+        // var innerlen = e.rows[i].value.length;
+        // console.log(e.rows[0].value[1]);
         p.appendChild(t);
-       // console.log(t);
-        console.log(e.rows[i].value.length);
-
-        var str = [];
-        var r = document.createTextNode(e.rows[i].value[1]);
-            //str.push(r);
-            //console.log(r);
-            //p.appendChild(r);
-        
-        //console.log(str);
-        p.appendChild(str);
         document.body.appendChild(p);
+        for(var a in e.rows[i].value){
+            var p_tag = document.createElement("P");
+            var text = document.createTextNode(e.rows[i].value[a]);
+            p_tag.appendChild(text);
+            document.body.appendChild(p_tag);
+        }
     }
 
     var btn = document.createElement("BUTTON");
